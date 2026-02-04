@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Brooks Running Shoes | Fleet Feet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: rgba(0, 102, 204, 0.1);
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: #f8fafb;
+            z-index: -1;
+        }
+
+        .header {
+            background: transparent;
+            padding: 2.5rem 5%;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .logo-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 5% 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro {
+            max-width: 700px;
+            margin: 0 auto 5rem;
+            padding: 0;
+            text-align: center;
+        }
+
+        .intro h1 {
+            color: #1a1a1a;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .intro p {
+            font-size: 1.125rem;
+            color: #4a5568;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .shoes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .shoe-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shoe-card:nth-child(odd) {
+            transform: translateY(20px);
+        }
+
+        .shoe-card:hover {
+            border-color: #0066CC;
+            transform: translateY(0);
+        }
+
+        .shoe-card:nth-child(odd):hover {
+            transform: translateY(15px);
+        }
+
+        .shoe-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background: #f8fafb;
+        }
+
+        .shoe-header {
+            background: transparent;
+            color: #1a1a1a;
+            padding: 2rem 2rem 1rem;
+            text-align: left;
+            border-bottom: 3px solid #0066CC;
+        }
+
+        .shoe-header h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .shoe-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .spec-item {
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .spec-item:hover {
+            background: transparent;
+        }
+
+        .spec-label {
+            font-weight: 500;
+            color: #6b7280;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .spec-value {
+            font-weight: 700;
+            color: #0066CC;
+            font-size: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .shoe-description {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .shoes-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .shoe-card:nth-child(odd) {
+                transform: none;
+            }
+
+            .shoe-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .shoe-card:nth-child(odd):hover {
+                transform: translateY(-5px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body::before {
+                display: none;
+            }
+
+            .header {
+                padding: 1.5rem 4%;
+            }
+
+            .logo {
+                height: 50px;
+            }
+
+            .container {
+                padding: 0 4% 3rem;
+            }
+
+            .intro {
+                margin-bottom: 3rem;
+                padding: 0 1rem;
+            }
+
+            .intro h1 {
+                font-size: 2.5rem;
+                line-height: 1.15;
+                margin-bottom: 1.25rem;
+            }
+
+            .intro p {
+                font-size: 1.05rem;
+                line-height: 1.6;
+            }
+
+            .shoes-grid {
+                gap: 2.5rem;
+            }
+
+            .shoe-image {
+                height: 240px;
+            }
+
+            .shoe-header {
+                padding: 1.75rem 1.5rem 1rem;
+            }
+
+            .shoe-header h2 {
+                font-size: 1.625rem;
+            }
+
+            .specs {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.25rem;
+            }
+
+            .spec-label {
+                font-size: 0.7rem;
+            }
+
+            .spec-value {
+                font-size: 1.35rem;
+            }
+
+            .shoe-content {
+                padding: 1.75rem 1.5rem;
+            }
+
+            .shoe-description {
+                font-size: 0.95rem;
+                line-height: 1.65;
+                padding-top: 1.75rem;
+                margin-top: 1.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 1.25rem 5%;
+            }
+
+            .logo {
+                height: 45px;
+            }
+
+            .intro h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .intro p {
+                font-size: 1rem;
+            }
+
+            .shoe-image {
+                height: 200px;
+            }
+
+            .shoe-header {
+                padding: 1.5rem 1.25rem 0.875rem;
+            }
+
+            .shoe-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .shoe-content {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .specs {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .spec-item {
+                padding-bottom: 1rem;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .spec-item:last-of-type {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .spec-label {
+                font-size: 0.7rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .spec-value {
+                font-size: 1.5rem;
+            }
+
+            .shoe-description {
+                font-size: 0.9rem;
+                padding-top: 1.5rem;
+                margin-top: 1.5rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .intro h1 {
+                font-size: 1.75rem;
+            }
+
+            .shoe-header h2 {
+                font-size: 1.35rem;
+            }
+
+            .spec-value {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="/image/fleetfeet logo.jpg" alt="Fleet Feet Logo" class="logo">
+            <img src="/image/brooks logo.png" alt="Brooks Logo" class="logo">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h1>Fleet Feet's Brooks Selection</h1>
+            <p>
+                Discover the perfect Brooks running shoe for your journey. Whether you're seeking cushioned comfort, 
+                reliable stability, or trail-ready performance. Our curated selection features the latest innovations 
+                in running technology. Each shoe is expertly designed to support your unique running style and help 
+                you achieve your goals with confidence and comfort.
+            </p>
+        </div>
+
+        <div class="shoes-grid">
+            <!-- Ghost 17 -->
+            <div class="shoe-card">
+                <img src="/image/ghost-17.avif" alt="Brooks Ghost 17" class="shoe-image">
+                <div class="shoe-header">
+                    <h2>Ghost 17</h2>
+                </div>
+                <div class="shoe-content">
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Heel Drop</span>
+                            <span class="spec-value">12mm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight (Men's)</span>
+                            <span class="spec-value">10.1 oz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight (Women's)</span>
+                            <span class="spec-value">8.8 oz</span>
+                        </div>
+                    </div>
+                    <div class="shoe-description">
+                        The Ghost 17 delivers soft, smooth cushioning with a balanced ride. Perfect for neutral runners 
+                        seeking everyday comfort and versatility across all distances.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adrenaline GTS 25 -->
+            <div class="shoe-card">
+                <img src="/image/adrenaline-25.avif" alt="Brooks Adrenaline GTS 25" class="shoe-image">
+                <div class="shoe-header">
+                    <h2>Adrenaline GTS 25</h2>
+                </div>
+                <div class="shoe-content">
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Heel Drop</span>
+                            <span class="spec-value">12mm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight (Men's)</span>
+                            <span class="spec-value">10.2 oz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight (Women's)</span>
+                            <span class="spec-value">9.0 oz</span>
+                        </div>
+                    </div>
+                    <div class="shoe-description">
+                        The trusted stability shoe featuring GuideRails technology to keep your body in its natural motion path. 
+                        Ideal for runners who need support without sacrificing comfort.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beast GTS 24 -->
+            <div class="shoe-card">
+                <img src="/image/beast-24.avif" alt="Brooks Beast GTS 24" class="shoe-image">
+                <div class="shoe-header">
+                    <h2>Beast GTS 24</h2>
+                </div>
+                <div class="shoe-content">
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Heel Drop</span>
+                            <span class="spec-value">12mm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight (Men's)</span>
+                            <span class="spec-value">12.6 oz</span>
+                        </div>
+                    </div>
+                    <div class="shoe-description">
+                        Maximum support meets maximum cushioning. The Beast GTS 24 offers supreme stability with a spacious fit, 
+                        designed for runners who need serious support for overpronation.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ariel GTS 24 -->
+            <div class="shoe-card">
+                <img src="/image/ariel-24.avif" alt="Brooks Ariel GTS 24" class="shoe-image">
+                <div class="shoe-header">
+                    <h2>Ariel GTS 24</h2>
+                </div>
+                <div class="shoe-content">
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Heel Drop</span>
+                            <span class="spec-value">12mm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight (Women's)</span>
+                            <span class="spec-value">10.8 oz</span>
+                        </div>
+                    </div>
+                    <div class="shoe-description">
+                        The women's counterpart to the Beast, offering maximum support and plush cushioning. 
+                        Built for runners who need enhanced stability with a comfortable, accommodating fit.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cascadia 19 -->
+            <div class="shoe-card">
+                <img src="/image/cascadia.avif" alt="Brooks Cascadia 19" class="shoe-image">
+                <div class="shoe-header">
+                    <h2>Cascadia 19</h2>
+                </div>
+                <div class="shoe-content">
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Heel Drop</span>
+                            <span class="spec-value">8mm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight (Men's)</span>
+                            <span class="spec-value">11.3 oz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight (Women's)</span>
+                            <span class="spec-value">9.8 oz</span>
+                        </div>
+                    </div>
+                    <div class="shoe-description">
+                        Trail running excellence with adaptable cushioning and rugged traction. The Cascadia 19 tackles 
+                        any terrain with confidence, featuring a protective design for off-road adventures.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
